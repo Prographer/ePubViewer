@@ -1,0 +1,39 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:component-scan base-package="com.prographer.epub"/>
+
+    <bean id="velocityConfig"
+          class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="resourceLoaderPath" value="/WEB-INF/views/"></property>
+        <property name="velocityProperties">
+            <props>
+                <prop key="input.encoding">UTF-8</prop>
+                <prop key="output.encoding">UTF-8</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!--
+    Velocity 설정 참고
+    http://winmargo.tistory.com/160
+    -->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+        <property name="suffix" value=".vm"></property>
+        <property name="order" value="1"></property>
+        <property name="exposeSessionAttributes" value="true"></property> <!--Session 속성 탬플릿에서 사용-->
+        <property name="exposeRequestAttributes" value="true"></property> <!--Request 속성 탬플릿에서 사용-->
+        <property name="exposeSpringMacroHelpers" value="true"></property> <!--스프링이 제공하는 Velocity 매크로 사용-->
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+    </bean>
+
+    <!--static resources 를 사용하기 위한 경로 설정-->
+    <mvc:resources mapping="/res/**" location="/res/"/>
+    <mvc:annotation-driven/>
+
+</beans>
