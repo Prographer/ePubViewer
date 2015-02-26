@@ -35,5 +35,7 @@ RUN curl -SL "$TOMCAT_TGZ_URL" -o tomcat.tar.gz \
 RUN apt-get update
 RUN apt-get install vim
 
-EXPOSE 8080
+RUN curl -L -o /usr/local/tomcat/webapps/ePubViewer.war http://github.com/Prographer/ePubViewer/raw/master/build/ePubViewer.war
+
+EXPOSE 80
 CMD ["catalina.sh", "run"]
