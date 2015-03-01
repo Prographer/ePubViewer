@@ -5,7 +5,7 @@
         <div class="ui-panel-inner">
             <ul class="toc">
                 #foreach($toc in $tocList)
-                    <li data-toc-url="$toc.getUrl()">$toc.getTitle()</li>
+                    <li onclick="select_toc('$toc.getUrl()')">$toc.getTitle()</li>
                 #end
             </ul>
         </div>

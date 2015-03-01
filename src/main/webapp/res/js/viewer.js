@@ -1,6 +1,4 @@
-$(document).ready(function () {
-    $(".toc li").on("click", function () {
-        var url = $(this).data("toc-url");
-        $('#view-frame').attr('src', url);
-    });
-});
+var select_toc = function (url) {
+    $('#view-frame').attr('src', url);
+    $("#table-of-context-panel").panel("close");
+}
