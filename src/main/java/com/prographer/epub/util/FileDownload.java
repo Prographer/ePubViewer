@@ -24,6 +24,11 @@ public class FileDownload {
         String localFilePath = null;
         if (httpUrl == null) return localFilePath;
         String[] paths = httpUrl.split("/");
+
+        File downDir = new File(downloadPath);
+        if(!downDir.exists())
+            downDir.mkdirs();
+
         localFilePath = downloadPath + "/" + paths[paths.length - 1];
 
 
@@ -47,12 +52,14 @@ public class FileDownload {
                 out.write(buffer, 0, numRead);
             }
         } catch (Exception e) {
-            log.error(e.getMessage());
+            log.error(e.getMessage(),e);
         } finally {
             try {
-                if (in != null) { in.close();}
                 if (out != null) {out.close();}
-            } catch (IOException ioe) {}
+                if (in != null) { in.close();}
+            } catch (IOException ioe) {
+                log.error(ioe.getMessage(),ioe);
+            }
         }
         return localFilePath;
     }
