@@ -3,7 +3,7 @@
 
     <div data-role="panel" data-display="overlay" data-position="left" id="table-of-context-panel">
         <div class="ui-panel-inner">
-            <ul>
+            <ul class="toc">
                 #foreach($toc in $tocList)
                     <li data-toc-url="$toc.getUrl()">$toc.getTitle()</li>
                 #end

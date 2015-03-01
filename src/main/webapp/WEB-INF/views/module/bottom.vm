@@ -5,5 +5,7 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/res/js/bootstrap.min.js"></script>
 
+<script src="/res/js/viewer.js"></script>
+
 </body>
 </html>
